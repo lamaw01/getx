@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/user_controller.dart';
 
-class HomePage extends StatelessWidget {
+// ignore: must_be_immutable
+class UserPage extends StatelessWidget {
   final userController = Get.put(UserController());
+  var getArgument = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: getArgument[1],
       appBar: AppBar(
-        title: Text('Api Test'),
-        centerTitle: true,
+        title: Text('${getArgument[0]}'),
       ),
       body: SafeArea(
         child: Column(
@@ -18,7 +20,21 @@ class HomePage extends StatelessWidget {
               child: Obx(
                 () => userController.isLoading.value
                     ? Center(
-                        child: CircularProgressIndicator(),
+                        child: userController.timeout.value
+                            ? Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Server Timeout'),
+                                  FlatButton(
+                                    color: Colors.orange,
+                                    onPressed: () {
+                                      userController.fetchUsers();
+                                    },
+                                    child: Text('refresh'),
+                                  )
+                                ],
+                              )
+                            : CircularProgressIndicator(),
                       )
                     : ListView.builder(
                         itemCount: userController.userList.length,

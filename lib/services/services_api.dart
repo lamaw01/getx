@@ -11,7 +11,7 @@ class ServicesApi {
   static Future<List<User>> fetchUsers() async {
     try {
       var response = await client.get(urlUsers).timeout(
-        const Duration(seconds: 20),
+        const Duration(seconds: 2),
         onTimeout: () {
           throw TimeoutException("connection timeout.");
         },
@@ -21,18 +21,17 @@ class ServicesApi {
         return userFromJson(jsonString);
       } else {
         print('user error');
-        return List<User>();
+        return null;
       }
     } on TimeoutException catch (_) {
-      // Get.dialog(Text('connection timeout'));
       print('response timeout');
-      return List<User>();
+      return null;
     } on SocketException catch (_) {
       print('socket error');
-      return List<User>();
+      return null;
     } catch (e) {
       print('err $e');
-      return List<User>();
+      return null;
     }
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/cart_controller.dart';
 import 'package:getx/controllers/shopping_controller.dart';
-import 'package:getx/views/home_page.dart';
 
 class ShoppingPage extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
@@ -11,12 +10,15 @@ class ShoppingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Shopping Page'),
         actions: [
           IconButton(
             icon: Icon(Icons.arrow_forward),
             onPressed: () {
-              Get.to(HomePage());
-              // Get.toNamed('/homePage');
+              Get.toNamed(
+                '/userPage',
+                arguments: ['User Page', Colors.grey[300]],
+              );
             },
           ),
         ],

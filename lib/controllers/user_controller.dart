@@ -6,6 +6,7 @@ import '../views/userdetails_page.dart';
 
 class UserController extends GetxController {
   var isLoading = true.obs;
+  var timeout = false.obs;
   var userList = List<User>().obs;
 
   @override
@@ -15,18 +16,16 @@ class UserController extends GetxController {
   }
 
   void fetchUsers() async {
-    var users = await ServicesApi.fetchUsers();
     try {
-      isLoading(true);
-      print(isLoading.value.toString());
+      var users = await ServicesApi.fetchUsers();
       if (users != null) {
         userList.assignAll(users);
+        isLoading(false);
+      } else {
+        timeout(true);
       }
     } catch (e) {
-      print('err ${e.toString()}');
-    } finally {
-      isLoading(false);
-      print(isLoading.value.toString());
+      print('err $e');
     }
   }
 
