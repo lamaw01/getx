@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 class ServicesApi {
   static var client = http.Client();
   static String urlUsers = 'https://jsonplaceholder.typicode.com/users';
-  bool timeout = false;
 
   static Future<List<User>> fetchUsers() async {
     try {

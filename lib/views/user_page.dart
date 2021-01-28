@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/user_controller.dart';
 
-// ignore: must_be_immutable
+var getArgument = Get.arguments;
+
 class UserPage extends StatelessWidget {
   final userController = Get.put(UserController());
-  var getArgument = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
