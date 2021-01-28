@@ -16,6 +16,7 @@ class ShoppingPage extends StatelessWidget {
             icon: Icon(Icons.arrow_forward),
             onPressed: () {
               Get.to(HomePage());
+              // Get.toNamed('/homePage');
             },
           ),
         ],
@@ -175,7 +176,16 @@ class ShoppingPage extends StatelessWidget {
             );
           },
         ),
-        onPressed: () {},
+        onPressed: () {
+          // Get.snackbar(
+          //   "SnackBar",
+          //   "message",
+          //   snackPosition: SnackPosition.TOP,
+          //   duration: Duration(seconds: 4),
+          //   colorText: Colors.white,
+          //   backgroundColor: Colors.black,
+          // );
+        },
       ),
     );
   }

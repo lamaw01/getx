@@ -46,14 +46,14 @@ class HomePage extends StatelessWidget {
                                           children: [
                                             Text(
                                               '${userController.userList[index].id}',
-                                              style: TextStyle(fontSize: 10),
+                                              style: TextStyle(fontSize: 12),
                                             ),
                                             SizedBox(
                                               height: 4,
                                             ),
                                             Text(
                                               '${userController.userList[index].email}',
-                                              style: TextStyle(fontSize: 10),
+                                              style: TextStyle(fontSize: 12),
                                             ),
                                           ],
                                         ),
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                                             Text(
                                               '${userController.userList[index].name}',
                                               style: TextStyle(
-                                                fontSize: 11,
+                                                fontSize: 12,
                                               ),
                                             ),
                                           ],
