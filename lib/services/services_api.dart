@@ -8,7 +8,6 @@ class ServicesApi {
   static String urlUsers = 'https://jsonplaceholder.typicode.com/users';
   bool timeout = false;
 
-  // ignore: missing_return
   static Future<List<User>> fetchUsers() async {
     try {
       var response = await client.get(urlUsers).timeout(
@@ -22,14 +21,18 @@ class ServicesApi {
         return userFromJson(jsonString);
       } else {
         print('user error');
+        return List<User>();
       }
     } on TimeoutException catch (_) {
       // Get.dialog(Text('connection timeout'));
       print('response timeout');
+      return List<User>();
     } on SocketException catch (_) {
       print('socket error');
+      return List<User>();
     } catch (e) {
       print('err $e');
+      return List<User>();
     }
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/user_controller.dart';
-import 'package:getx/views/userdetails_page.dart';
 
 class HomePage extends StatelessWidget {
   final userController = Get.put(UserController());
@@ -27,9 +26,7 @@ class HomePage extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                               print('click');
-                              Get.to(UserDetails(
-                                id: index,
-                              ));
+                              userController.navigatetoDetails(index);
                             },
                             child: Card(
                               margin:

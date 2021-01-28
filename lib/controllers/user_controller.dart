@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:getx/models/user.dart';
 import 'package:getx/services/services_api.dart';
 
+import '../views/userdetails_page.dart';
+
 class UserController extends GetxController {
   var isLoading = true.obs;
   var userList = List<User>().obs;
@@ -26,5 +28,11 @@ class UserController extends GetxController {
       isLoading(false);
       print(isLoading.value.toString());
     }
+  }
+
+  void navigatetoDetails(index) {
+    Get.to(UserDetails(
+      id: index,
+    ));
   }
 }
